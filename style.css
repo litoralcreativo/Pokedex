@@ -1,0 +1,324 @@
+* {
+  --normal: rgb(197, 197, 197);
+  --fighting: rgb(209, 175, 25);
+  --flying: rgb(164, 102, 235);
+  --poison: rgb(9, 170, 76);
+  --poison: rgb(153, 95, 9);
+  --rock: rgb(117, 112, 104);
+  --bug: rgb(127, 177, 112);
+  --ghost: rgb(107, 11, 102);
+  --steel: rgb(66, 59, 85);
+  --fire: rgb(255, 0, 0);
+  --water: rgb(0, 0, 255);
+  --grass: rgb(0, 255, 0);
+  --electric: rgb(255, 255, 0);
+  --psychic: rgb(161, 161, 0);
+  --ice: rgb(79, 173, 161);
+  --dragon: rgb(255, 136, 0);
+  --dark: rgb(0, 0, 0);
+  --fairy: rgb(211, 85, 85);
+  --darkGrey: rgb(50, 50, 50);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: monospace;
+}
+
+#container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+
+#pokedex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: row;
+  width: 500px;
+  height: 400px;
+}
+
+#leftPanel {
+  z-index: 2;
+  width: 600px;
+  height: 100%;
+  background-color: rgb(200, 60, 50);
+  border-radius: 20px 5px 5px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 5px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+#rightPanel {
+  z-index: 1;
+  width: 500px;
+  height: 90%;
+  margin-bottom: 10px;
+  background-color: rgb(200, 60, 50);
+  border-radius: 0px 10px 10px 0px;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  padding: 10px;
+  transition: 0.5s ease;
+}
+
+#elementLed {
+  width: 40px;
+  height: 40px;
+  background-color: var(--darkGrey);
+  border: 4px solid white;
+  border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+.firstShadow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 10px 10px 0;
+  width: 70%;
+  height: 70%;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+.secondShadow {
+  width: 40%;
+  height: 40%;
+  margin: 0 5px 5px 0;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+}
+
+#elementLed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#upperLeds {
+  padding: 10px;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#mainScreen {
+  height: 170px;
+  padding: 10px;
+  width: 80%;
+  background-color: rgb(224, 224, 224);
+  box-shadow: inset -1px 1px 5px 2px rgba(0, 0, 0, 0.5);
+  border-radius: 10px 10px 10px 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#screen {
+  height: 70%;
+  padding: 10px;
+  width: 70%;
+  background-color: white;
+  box-shadow: inset -1px 1px 4px 1px rgba(0, 0, 0, 0.5);
+  border-radius: 10px 10px 10px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#bottomButtons {
+  width: 80%;
+  height: 100px;
+  margin-top: 20px;
+  border-radius: 10px;
+  box-shadow: inset -1px 1px 4px 0px rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#arrowsBtns {
+  width: 80px;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 10px;
+}
+
+.btnRown {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrBtn {
+  background-color: rgb(39, 39, 39);
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: -3px 3px 1px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(17, 17, 17);
+}
+
+#leftBtn,
+#rightBtn,
+#upBtn,
+#downBtn {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+#leftBtn:hover,
+#rightBtn:hover,
+#upBtn:hover,
+#downBtn:hover {
+  background-color: rgb(60, 60, 60);
+}
+
+#leftBtn,
+#rightBtn {
+  width: 25px;
+}
+
+#upBtn,
+#downBtn {
+  height: 25px;
+}
+
+#rightBtn {
+  border-radius: 5px 0 0 5px;
+  border-right: transparent;
+}
+#leftBtn {
+  border-radius: 0 5px 5px 0;
+  border-left: transparent;
+}
+#upBtn {
+  border-radius: 5px 5px 0 0;
+  border-bottom: transparent;
+}
+
+#downBtn {
+  border-radius: 0 0 5px 5px;
+  border-top: transparent;
+}
+
+#centerBtn {
+  border: 1px solid transparent;
+}
+
+#centerBtnCircle {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+#IOBtn {
+  user-select: none;
+  background-color: rgb(29, 29, 29);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  align-self: flex-start;
+  margin: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-shadow: -3px 3px 1px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(60, 60, 60, 1);
+  font-size: 1.1em;
+  transition: filter 0.2s;
+  cursor: pointer;
+}
+
+#IOBtn:hover {
+  filter: brightness(1.5);
+}
+
+.textContainer {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: white;
+  border-radius: 10px 2px 2px 10px;
+  max-height: 50px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+  box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+div #statsContainer {
+  max-height: 150px !important;
+  border-radius: 10px 2px 10px 10px;
+  height: 200px;
+}
+
+.rp-disable {
+  transform: translateX(-250px);
+}
+
+.rp-active {
+  transform: translateX(0px);
+}
+
+/* DATA */
+
+#poke-name,
+#poke-type,
+.poke-ability,
+.poke-stat {
+  margin: 0;
+  padding: 10px;
+  transition: 0.5s;
+}
+
+#poke-img {
+  max-height: 100%;
+  transition: 0.5s;
+}
+.disable {
+  opacity: 0%;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+}

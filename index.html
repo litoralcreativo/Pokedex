@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Pokedex UTN-BA</title>
+  </head>
+  <body>
+    <div id="container">
+      <div id="pokedex">
+        <div id="leftPanel">
+          <div id="upperLeds">
+            <div id="elementLed">
+              <div class="firstShadow">
+                <div class="secondShadow"></div>
+              </div>
+            </div>
+            
+          </div>
+          <div id="mainScreen">
+            <div id="screen">
+              <img id="poke-img" src="" alt=""></img>
+              <div id="imageVelo"></div>
+            </div>
+          </div>
+          <div id="bottomButtons">
+            <div id="IOBtn" onclick="pokedex.activeToogle()">I/O</div>
+            <div id="horizontalLeds"></div>
+            <div id="arrowsBtns">
+              <div class="btnRown">
+                <div id="upBtn" onclick="changeType(1)" class="arrBtn"></div>
+              </div>
+              <div class="btnRown">
+                <div id="leftBtn" onclick="changeIndex(1)" class="arrBtn"></div>
+                <div id="centerBtn" class="arrBtn">
+                  <div id="centerBtnCircle"></div>
+                </div>
+                <div id="rightBtn" onclick="changeIndex(-1)" class="arrBtn"></div>
+              </div>
+              <div class="btnRown">
+                <div id="downBtn" onclick="changeType(-1)" class="arrBtn"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="rightPanel" class="rp-disable">
+          <label for="nameContainer" style="color: white;">Nombre</label>
+          <div id="nameContainer" class="textContainer">
+            <strong> <p id="poke-name">-</p></strong>
+          </div>
+          <label for="typeContainer" style="color: white;">Tipo</label>
+          <div id="typeContainer" class="textContainer">
+            <strong> <p id="poke-type">-</p></strong>
+          </div> 
+          <label for="abilitiesContainer" style="color: white;">Habilidades</label>
+          <div id="abilitiesContainer" class="textContainer">
+            <p class="poke-ability">-</p>
+          </div>
+
+          <label for="statsContainer" style="color: white;">Habilidades</label>
+          <div class="textContainer" id="statsContainer" >
+            <div class="stat">
+              <p class="poke-stat" id="hp_stat">HP: </p>
+            </div>
+            <div class="stat">
+              <p class="poke-stat"  id="atk_stat">ATK: </p>
+            </div>
+            <div class="stat">
+              <p class="poke-stat"  id="def_stat">DEF: </p>
+            </div>
+            <div class="stat">
+              <p class="poke-stat"  id="satk_stat">S-ATK: </p>
+            </div>
+            <div class="stat">
+              <p class="poke-stat"  id="sdef_stat">S-DEF: </p>
+            </div>
+            <div class="stat">
+              <p class="poke-stat"  id="speed_stat">SPEED: </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
