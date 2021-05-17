@@ -11,6 +11,7 @@
   --fire: rgb(255, 0, 0);
   --water: rgb(0, 0, 255);
   --grass: rgb(0, 255, 0);
+  --on: rgb(66, 199, 73);
   --electric: rgb(255, 255, 0);
   --psychic: rgb(161, 161, 0);
   --ice: rgb(79, 173, 161);
@@ -86,15 +87,15 @@ body {
   margin: 0 10px 10px 0;
   width: 70%;
   height: 70%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
 }
 
 .secondShadow {
   width: 40%;
   height: 40%;
-  margin: 0 5px 5px 0;
-  background-color: rgba(255, 255, 255, 0.5);
+  margin: 0 30% 30% 0;
+  background-color: rgba(255, 255, 255, 0.3);
   border-radius: 50%;
 }
 
@@ -275,6 +276,14 @@ div #statsContainer {
   height: 200px;
 }
 
+.stats {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 10px;
+}
+
 .rp-disable {
   transform: translateX(-250px);
 }
@@ -290,8 +299,12 @@ div #statsContainer {
 .poke-ability,
 .poke-stat {
   margin: 0;
-  padding: 10px;
+  padding: 5px 10px;
   transition: 0.5s;
+}
+
+#poke-name {
+  font-size: 1.2em;
 }
 
 #poke-img {
@@ -300,6 +313,21 @@ div #statsContainer {
 }
 .disable {
   opacity: 0%;
+}
+
+.led {
+  width: 10px;
+  height: 10px;
+  margin-left: 1px;
+  background-color: var(--darkGrey);
+  border: 1px solid white;
+  border-radius: 50%;
+  transition: 0.5s ease;
+}
+
+.statleds {
+  display: flex;
+  flex-direction: row;
 }
 
 /* SCROLLBAR */

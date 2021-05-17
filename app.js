@@ -158,7 +158,7 @@ class PokeDex {
   async getNewPokemon() {
     this.pokemon = await getByType(
       this.typeIndex,
-      this.pokemonTypes[this.typeIndex].current
+      this.pokemonTypes[this.typeIndex - 1].current
     );
     this.showData();
   }
@@ -175,28 +175,28 @@ class PokeDex {
     }
     this.pokemon = await getByType(
       this.typeIndex,
-      this.pokemonTypes[this.typeIndex].current
+      this.pokemonTypes[this.typeIndex - 1].current
     );
     this.showData();
   }
 
   async changePokemonByIndexInType(delta) {
     let min = 1;
-    let max = this.pokemonTypes[this.typeIndex].count;
-    let current = this.pokemonTypes[this.typeIndex].current;
+    let max = this.pokemonTypes[this.typeIndex - 1].count;
+    let current = this.pokemonTypes[this.typeIndex - 1].current;
 
     if (delta == -1) {
       if (current != min) {
-        this.pokemonTypes[this.typeIndex].current -= 1;
+        this.pokemonTypes[this.typeIndex - 1].current -= 1;
       }
     } else {
       if (current != max) {
-        this.pokemonTypes[this.typeIndex].current += 1;
+        this.pokemonTypes[this.typeIndex - 1].current += 1;
       }
     }
     this.pokemon = await getByType(
       this.typeIndex,
-      this.pokemonTypes[this.typeIndex].current
+      this.pokemonTypes[this.typeIndex - 1].current
     );
     this.showData();
   }
@@ -219,7 +219,7 @@ class PokeDex {
 
   showData() {
     if (this.active) {
-      this.nameElement.innerText = this.pokemon.name;
+      this.nameElement.innerText = this.pokemon.name.toUpperCase();
       this.imageElement.src =
         this.pokemon.sprites.other["official-artwork"].front_default;
       this.ledElement.style.backgroundColor = `var(--${
@@ -237,14 +237,38 @@ class PokeDex {
         }</p>`;
         this.abilitiesContainer.innerHTML += abiElement;
       });
+      this.setStats();
+    }
+  }
 
-      // stats
-      this.hp_stat.innerHTML = "HP: " + this.pokemon.stats[0].base_stat;
-      this.atk_stat.innerHTML = "ATK: " + this.pokemon.stats[1].base_stat;
-      this.satk_stat.innerHTML = "DEF: " + this.pokemon.stats[2].base_stat;
-      this.def_stat.innerHTML = "S-ATK: " + this.pokemon.stats[3].base_stat;
-      this.sdef_stat.innerHTML = "S-DEF: " + this.pokemon.stats[4].base_stat;
-      this.speed_stat.innerHTML = "SPEED: " + this.pokemon.stats[5].base_stat;
+  setStats() {
+    /* 
+    this.hp_stat.innerHTML = "HP: " + this.pokemon.stats[0].base_stat;
+    this.atk_stat.innerHTML = "ATK: " + this.pokemon.stats[1].base_stat;
+    this.satk_stat.innerHTML = "DEF: " + this.pokemon.stats[2].base_stat;
+    this.def_stat.innerHTML = "S-ATK: " + this.pokemon.stats[3].base_stat;
+    this.sdef_stat.innerHTML = "S-DEF: " + this.pokemon.stats[4].base_stat;
+    this.speed_stat.innerHTML = "SPEED: " + this.pokemon.stats[5].base_stat;
+     */
+    this.turnStatsLeds("hp_leds", 255, 0);
+    this.turnStatsLeds("atk_leds", 190, 1);
+    this.turnStatsLeds("def_leds", 250, 2);
+    this.turnStatsLeds("satk_leds", 194, 3);
+    this.turnStatsLeds("sdef_leds", 250, 4);
+    this.turnStatsLeds("speed_leds", 200, 5);
+  }
+
+  turnStatsLeds(id, max, s) {
+    let hpLeds = document.getElementById(id).getElementsByClassName("led");
+    let activeLeds = parseInt(
+      (this.pokemon.stats[s].base_stat * hpLeds.length) / max
+    );
+    for (let i = 0; i < 10; i++) {
+      if (i + 1 <= activeLeds) {
+        hpLeds[i].style.backgroundColor = "var(--on)";
+      } else {
+        hpLeds[i].style.backgroundColor = "var(--darkGrey)";
+      }
     }
   }
 
