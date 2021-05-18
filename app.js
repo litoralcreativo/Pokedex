@@ -219,9 +219,8 @@ class PokeDex {
 
   showData() {
     if (this.active) {
-      this.nameElement.innerText = this.pokemon.name.toUpperCase();
-      this.imageElement.src =
-        this.pokemon.sprites.other["official-artwork"].front_default;
+      this.nameElement.innerText = this.pokemon.name;
+      this.imageElement.src = this.pokemon.sprites.front_default;
       this.ledElement.style.backgroundColor = `var(--${
         this.pokemonTypes[this.typeIndex - 1].name
       })`;

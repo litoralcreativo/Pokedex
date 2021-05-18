@@ -308,7 +308,7 @@ div #statsContainer {
 }
 
 #poke-img {
-  max-height: 100%;
+  height: 100%;
   transition: 0.5s;
 }
 .disable {
